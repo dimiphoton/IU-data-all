@@ -1,0 +1,61 @@
+\chapter{Assignment 3 : Transformed Random Variables}
+
+\section*{$\xi$ values}
+
+\begin{itemize}
+    \item $\xi_9 = 0$
+    \item $\xi_10 = 8,7,6,17,12$
+\end{itemize}
+
+
+
+\section{Problem statement}
+The total bandwidth to failure $ S $ of a single router follows an exponential distribution with density:
+\begin{equation}
+f_S(s) = \frac{1}{\theta} \exp\left(-\frac{s}{\theta}\right), \quad s > 0, \, \theta > 0,
+\end{equation}
+where $ \theta $ is the mean failure bandwidth for a single router.
+
+For a dual-router system, the total bandwidth to failure $ T $ can be expressed as:
+\begin{equation}
+T = S_{1} + S_{2}
+\end{equation}
+where $ S_{1} $ and $ S_{2} $ are independent and identically distributed random variables representing the bandwidth totals to failure of each router.
+
+\section{Density Function of $ T $}
+Given $ S_{1}$ and $ S_{2}$ both follow an exponential distribution of parameter $\frac{1}{\theta}$, the sum $ T = S_{1} + S_{2} $ follows a \emph{Gamma distribution} with shape parameter $ k = 2 $ and rate $ \lambda = \frac{1}{\theta} $. The probability density function of $ T $ with  $ \lambda = \frac{1}{\theta} $ is:
+\begin{equation}
+f_T(t) = \frac{t \lambda^2 e^{-\lambda t}}{1} = \frac{t}{\theta^2} \exp\left(-\frac{t}{\theta}\right)
+\end{equation}
+
+\section{Likelihood Function}
+Given an independent sample $ T_1, T_2, \dots, T_n $ of $ T $, the likelihood function for the parameter $ \theta $ is:
+\begin{equation}
+L(\theta) = \prod_{i=1}^n f_T(T_i) = \prod_{i=1}^n \frac{T_i}{\theta^2} \exp\left(-\frac{T_i}{\theta}\right)
+\end{equation}
+Simplifying:
+\begin{equation}
+L(\theta) = \frac{1}{\theta^{2n}} \prod_{i=1}^n T_i \exp\left(-\frac{1}{\theta} \sum_{i=1}^n T_i\right)
+\end{equation}
+
+\section{Simplification of the Likelihood Function}
+To maximize the likelihood function, we simplify using the log-likelihood:
+\begin{equation}
+\ell(\theta) = \ln L(\theta) = -2n \ln \theta + \sum_{i=1}^{n} \ln T_{i} - \frac{1}{\theta} \sum_{i=1}^n T_i
+\end{equation}
+The derivative of $ \ell(\theta) $ with respect to $ \theta $ is:
+\begin{equation}
+\frac{\partial \ell}{\partial \theta} = -\frac{2n}{\theta} + \frac{1}{\theta^2} \sum_{i=1}^n T_i.
+\end{equation}
+Setting this equal to zero gives:
+\begin{equation}
+\hat{\theta} = \frac{1}{2n} \sum_{i=1}^n T_i.
+\end{equation}
+
+\section{Estimation and Expectation for the Experiment}
+Given the sample $ [8, 7, 6, 17, 12] $, I compute $ \hat{\theta} $ and the expectation of $ T $ as:
+\begin{equation}
+E[T] = 2\hat{\theta}
+\end{equation}
+
+from the given sample, the model with the maximum likelihood has $ \theta = 5 $. The expectation of $ T $ is $ 10 $.

@@ -1,0 +1,95 @@
+\chapter{Assignment 5: Regularized Regression}
+
+\section*{$\xi$ values}
+
+\begin{itemize}
+\item 
+\end{itemize}
+
+\section{Problem statement}
+
+We want to make a bayesian modelling of a gamma distribution whose scale parameter is itself a random variable following a gamma distribution.
+
+
+
+\section*{Part 1: Posterior Distribution of $\theta$}
+
+The likelihood function for $X$ given $\theta$ is:
+\begin{equation}
+f(x \mid \theta) = \frac{\beta^\alpha \cdot x^{\alpha-1} e^{-\beta x}}{\Gamma(\alpha)}
+\end{equation}
+where $\beta = \frac{1}{\theta}$
+Substituting $\beta = \frac{1}{\theta}$, we get:
+\begin{equation}
+f(x \mid \theta) = \frac{\left(\frac{1}{\theta}\right)^3 \cdot x^2 \cdot e^{-\frac{x}{\theta}}}{\Gamma(3)}.
+\end{equation}
+
+The prior distribution for $\theta$ is:
+\begin{equation}
+\pi(\theta) = \frac{\Xi_{18}^{\Xi_{17}} \cdot \theta^{\Xi_{17}-1} \cdot e^{-\Xi_{18} \theta}}{\Gamma(\Xi_{17})}.
+\end{equation}
+
+The posterior distribution $\pi(\theta \mid x)$ is proportional to the product of the likelihood and the prior:
+\begin{equation}
+\pi(\theta \mid x) \propto f(x \mid \theta) \cdot \pi(\theta).
+\end{equation}
+
+Substituting the expressions for the likelihood and prior:
+\begin{equation}
+\pi(\theta \mid x) \propto \left(\frac{1}{\theta}\right)^3 \cdot x^2 \cdot e^{-\frac{x}{\theta}} \cdot \theta^{\Xi_{17}-1} \cdot e^{-\Xi_{18} \theta}.
+\end{equation}
+
+Simplifying:
+\begin{equation}
+\pi(\theta \mid x) \propto \theta^{\Xi_{17} - 4} \cdot e^{-\Xi_{18} \theta - \frac{x}{\theta}}.
+\end{equation}
+
+The posterior distribution has the form of a Gamma distribution. For a Gamma distribution, the shape and rate parameters are updated as:
+\begin{equation}
+\tilde{\alpha} = \Xi_{17} + \alpha = \Xi_{17} + 3, \quad
+\tilde{\beta} = \Xi_{18} + x = \Xi_{18} + \Xi_{19}.
+\end{equation}
+
+Thus, the posterior distribution is:
+\begin{equation}
+\theta \mid x \sim \Gamma(\tilde{\alpha} = \Xi_{17} + 3, \tilde{\beta} = \Xi_{18} + \Xi_{19}).
+\end{equation}
+
+\section*{Part 2: Bayes Estimate with Square-Error Loss}
+
+The Bayes estimate under the square-error loss function is the \textbf{mean} of the posterior distribution. 
+
+For a Gamma distribution $ \Gamma(\alpha, \beta) $, the mean is given by:
+\begin{equation}
+Mean = \frac{\alpha}{\beta}.
+\end{equation}
+
+From Part (a), the posterior parameters are:
+\begin{equation}
+\tilde{\alpha} = \Xi_{17} + 3, \quad \tilde{\beta} = \Xi_{18} + \Xi_{19}.
+\end{equation}
+
+Thus, the Bayes estimate is:
+\begin{equation}
+\hat{\theta}_{mean} = \frac{\tilde{\alpha}}{\tilde{\beta}} = \frac{\Xi_{17} + 3}{\Xi_{18} + \Xi_{19}}.
+\end{equation}
+
+\subsection{Part 3: Bayes Estimate Using the Mode}
+
+The Bayes estimate under the mode of the posterior distribution is the \textbf{mode} of the posterior Gamma distribution. 
+
+For a Gamma distribution $ \Gamma(\alpha, \beta) $, the mode is given by:
+\begin{equation}
+Mode = \frac{\alpha - 1}{\beta}
+\end{equation}
+
+Using the posterior parameters from Part (a):
+\begin{equation}
+\tilde{\alpha} = \Xi_{17} + 3, \quad \tilde{\beta} = \Xi_{18} + \Xi_{19}.
+\end{equation}
+
+The mode is:
+\begin{equation}
+\hat{\theta}_{mode} = \frac{\tilde{\alpha} - 1}{\tilde{\beta}} = \frac{\Xi_{17} + 2}{\Xi_{18} + \Xi_{19}}.
+\end{equation}
+

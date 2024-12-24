@@ -23,5 +23,5 @@ def generate_and_save_poisson_graph(probabilities, expected_value, median,lambda
     ax.axvline(expected_value, color='red', linestyle='--', label='Expected Value')
     ax.axvline(median, color='green', linestyle='--', label='Median')
     ax.legend()
-
-    plt.savefig("code/figures/poisson.png")
+    # save it in pdf
+    plt.savefig("poisson_distribution.pdf")
