@@ -1,4 +1,4 @@
-\chapter{Assignment 4: Hypothesis Test}
+\chapter{Hypothesis Test}
 
 \section*{$\xi$ values}
 
@@ -10,12 +10,12 @@
 \end{itemize}
 
 
-\section{Problem statement}
+\section*{Problem statement}
 
-A statistical hypothesis testing is needed to determine if a new production system for hammers yields higher weights than the current system. The weights of hammers produced in the factory are normally distributed with a mean of 912 grams and a standard deviation of 36.6 grams.
+Statistical hypothesis testing is needed to determine whether a new hammer production system yields higher weights than the current system.
 The analysis steps include setting up the hypotheses, performing the test, and making a decision based on the results.
 
-\subsection*{Proposed Model for the Hammer Weights}
+\section{Modeling of the hammer weights}
 
 The weights of hammers produced in the factory can be modeled using a normal distribution based on the observed long-term data:
 \begin{equation}
@@ -27,28 +27,33 @@ where:
     \item $\sigma = \xi_{12}$ is the standard deviation of the weights.
 \end{itemize}
 
-\subsubsection*{Assumptions}
-The following assumptions are made for this model to hold:
+\subsection*{Assumptions}
+The following assumptions are made to ensure that this model holds:
 \begin{itemize}
     \item The weights of the hammers are independent .
     \item mean and standard deviation are not varying in time.
-    \item The underlying distribution of weights is approximately normal
 \end{itemize}
 
-\subsubsection*{Model Parameters}
-The parameters of the model are:
-\begin{itemize}
-    \item $\mu$: Mean of the distribution.
-    \item $\sigma^2$: Variance of the distribution (or $\sigma$: standard deviation).
-\end{itemize}
 
 \section{Hypothesis Testing}
 
-\subsection*{chosen statistical test and Decision Rule}
-I perform a one-sample one-tailed $ t $-test
+\subsection{Hypotheses definition}
+
+\subsubsection*{Null Hypothesis $H_{0}$}
+
+This is the default assumption or the status quo.  The mean weight of the hammers produced by the new system is the same as the old system: $\mu_{0} = \xi_{11}$.
+
+\subsection*{Alternative Hypothesis ($H_{a}$)}
+
+The alternative hypothesis ($H_{a}$) assumes that the new system produces hammers with a higher mean weight: $\mu_{0} > \xi_{11}$.
 
 
-The test statistic is given by:
+\subsection{chosen statistical test and Decision Rule}
+
+
+
+\subsubsection*{one-tailed $ t $-test}
+The test consists in computing
 \begin{equation}
 t = \frac{\bar{x} - \mu_0}{s / \sqrt{n}}
 \end{equation}
@@ -57,25 +62,21 @@ where:
     \item $\bar{x}$ is the sample mean,
     \item $s$ is the sample standard deviation,
     \item $n$ is the sample size,
-    \item $\mu_{0} = 912$ is the null hypothesis mean.
+    \item $\mu_{0} = \xi_{11}$ is the null hypothesis mean.
 \end{itemize}
+
+\subsubsection*{Decision rule}
 
 The decision rule is to reject $H_{0}$ if $t>t_{c}$, where $ t_{c} $ is determined from the $ t $-distribution table at a chosen significance level $\alpha$ with $ n-1 = 9 $ degrees of freedom.
 
-To determine if the new production system yields higher weights, we set up the following hypotheses:
+To determine whether the new production system yields higher weights, we set up the following hypotheses:
 \begin{itemize}
 \item $H_{0}$ and $\mu = 912$ : the mean weight remains unchanged
 \item $H_{a}$ and $\mu > 912$ :  the mean weight is higher under the new system
 \end{itemize}
 
 
-\subsection*{Error Probabilities}
-\begin{itemize}
-    \item Type I error ($\alpha$): Rejecting $H_0$ when $H_0$ is true. Choose $\alpha = 0.05$.
-    \item Type II error ($\beta$): Failing to reject $H_0$ when $H_a$ is true. Can be estimated if the true mean under $H_a$ is known.
-\end{itemize}
-
-\subsection*{test computation}
+\subsection{test computation}
 The sample weights are:
 \begin{equation}
 [879, 842, 954, 842, 885, 918, 989, 768, 867, 1022]
@@ -97,6 +98,6 @@ t = \frac{\bar{x} - \mu_0}{s / \sqrt{n}} = \frac{896.6 - 912}{71.5 / \sqrt{10}} 
 \end{equation}
 
 \subsection*{Decision and Conclusion}
-For $\alpha = 0.05$ and $df = 9$, $t_{c} \approx 1.8$. Since $t = -0.69 < t_{c}$, I fail to reject $H_{0}$.
+for $\alpha = 0.05$ and $df = 9$, $t_{c} \approx 1.8$. Since $t = -0.69 < t_{c}$, the rule is to not reject $H_{0}$. (equivalent formulation: the $p$ value is $0.54>0.05$.
 
 \textbf{Conclusion}: There is insufficient evidence to suggest that the new system produces hammers with higher weights.

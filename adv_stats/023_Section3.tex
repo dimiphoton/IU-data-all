@@ -1,10 +1,10 @@
-\chapter{Assignment 3 : Transformed Random Variables}
+\chapter{Transformed Random Variables}
 
 \section*{$\xi$ values}
 
 \begin{itemize}
     \item $\xi_9 = 0$
-    \item $\xi_10 = 8,7,6,17,12$
+    \item $\xi_10 = [8,7,6,17,12]$
 \end{itemize}
 
 
@@ -23,7 +23,7 @@ T = S_{1} + S_{2}
 where $ S_{1} $ and $ S_{2} $ are independent and identically distributed random variables representing the bandwidth totals to failure of each router.
 
 \section{Density Function of $ T $}
-Given $ S_{1}$ and $ S_{2}$ both follow an exponential distribution of parameter $\frac{1}{\theta}$, the sum $ T = S_{1} + S_{2} $ follows a \emph{Gamma distribution} with shape parameter $ k = 2 $ and rate $ \lambda = \frac{1}{\theta} $. The probability density function of $ T $ with  $ \lambda = \frac{1}{\theta} $ is:
+Given $ S_{1}$ and $ S_{2}$ both follow an exponential distribution of parameter $\frac{1}{\theta}$, the sum $ T = S_{1} + S_{2} $ follows a \emph{Gamma distribution} with shape parameter $ k = 1+1 $ and rate $ \lambda = \frac{1}{\theta} $. The probability density function of $ T $ with  $ \lambda = \frac{1}{\theta} $ is:
 \begin{equation}
 f_T(t) = \frac{t \lambda^2 e^{-\lambda t}}{1} = \frac{t}{\theta^2} \exp\left(-\frac{t}{\theta}\right)
 \end{equation}
@@ -47,15 +47,19 @@ The derivative of $ \ell(\theta) $ with respect to $ \theta $ is:
 \begin{equation}
 \frac{\partial \ell}{\partial \theta} = -\frac{2n}{\theta} + \frac{1}{\theta^2} \sum_{i=1}^n T_i.
 \end{equation}
+
+The model with maximal likelihood \emph{wrt} the parameter $\theta$ has its likelihood derivative equal to zero.
+
 Setting this equal to zero gives:
 \begin{equation}
 \hat{\theta} = \frac{1}{2n} \sum_{i=1}^n T_i.
 \end{equation}
 
 \section{Estimation and Expectation for the Experiment}
-Given the sample $ [8, 7, 6, 17, 12] $, I compute $ \hat{\theta} $ and the expectation of $ T $ as:
-\begin{equation}
-E[T] = 2\hat{\theta}
-\end{equation}
+Given the sample $ [8, 7, 6, 17, 12] $, the parameter $\hat{\theta}$ for which the model $T$ has the maximal likelihood is:
+\begin{equation*}
+    \hat{\Theta}=\frac{T}{2} = 5
+\end{equation*}
 
-from the given sample, the model with the maximum likelihood has $ \theta = 5 $. The expectation of $ T $ is $ 10 $.
+The expected value of $ T $ under MLE is 10.
+
