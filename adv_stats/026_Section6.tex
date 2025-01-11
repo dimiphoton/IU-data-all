@@ -1,4 +1,4 @@
-\chapter{Assignment 5: Regularized Regression}
+\chapter{Assignment 6: Bayesian estimate}
 
 \section*{$\xi$ values}
 
@@ -26,7 +26,7 @@ f(x \mid \theta) = \frac{\left(\frac{1}{\theta}\right)^3 \cdot x^2 \cdot e^{-\fr
 
 The prior distribution for $\theta$ is:
 \begin{equation}
-\pi(\theta) = \frac{\Xi_{18}^{\Xi_{17}} \cdot \theta^{\Xi_{17}-1} \cdot e^{-\Xi_{18} \theta}}{\Gamma(\Xi_{17})}.
+\pi(\theta) = \frac{\xi_{18}^{\xi_{17}} \cdot \theta^{\xi_{17}-1} \cdot e^{-\xi_{18} \theta}}{\Gamma(\xi_{17})}.
 \end{equation}
 
 The posterior distribution $\pi(\theta \mid x)$ is proportional to the product of the likelihood and the prior:
@@ -36,23 +36,23 @@ The posterior distribution $\pi(\theta \mid x)$ is proportional to the product o
 
 Substituting the expressions for the likelihood and prior:
 \begin{equation}
-\pi(\theta \mid x) \propto \left(\frac{1}{\theta}\right)^3 \cdot x^2 \cdot e^{-\frac{x}{\theta}} \cdot \theta^{\Xi_{17}-1} \cdot e^{-\Xi_{18} \theta}.
+\pi(\theta \mid x) \propto \left(\frac{1}{\theta}\right)^3 \cdot x^2 \cdot e^{-\frac{x}{\theta}} \cdot \theta^{\xi_{17}-1} \cdot e^{-\xi_{18} \theta}.
 \end{equation}
 
 Simplifying:
 \begin{equation}
-\pi(\theta \mid x) \propto \theta^{\Xi_{17} - 4} \cdot e^{-\Xi_{18} \theta - \frac{x}{\theta}}.
+\pi(\theta \mid x) \propto \theta^{\xi_{17} - 4} \cdot e^{-\xi_{18} \theta - \frac{x}{\theta}}.
 \end{equation}
 
 The posterior distribution has the form of a Gamma distribution. For a Gamma distribution, the shape and rate parameters are updated as:
 \begin{equation}
-\tilde{\alpha} = \Xi_{17} + \alpha = \Xi_{17} + 3, \quad
-\tilde{\beta} = \Xi_{18} + x = \Xi_{18} + \Xi_{19}.
+\tilde{\alpha} = \xi_{17} + \alpha = \xi_{17} + 3, \quad
+\tilde{\beta} = \xi_{18} + x = \xi_{18} + \xi_{19}.
 \end{equation}
 
 Thus, the posterior distribution is:
 \begin{equation}
-\theta \mid x \sim \Gamma(\tilde{\alpha} = \Xi_{17} + 3, \tilde{\beta} = \Xi_{18} + \Xi_{19}).
+\theta \mid x \sim \Gamma(\tilde{\alpha} = \xi_{17} + 3, \tilde{\beta} = \xi_{18} + \xi_{19}).
 \end{equation}
 
 \section*{Part 2: Bayes Estimate with Square-Error Loss}
@@ -66,12 +66,12 @@ Mean = \frac{\alpha}{\beta}.
 
 From Part (a), the posterior parameters are:
 \begin{equation}
-\tilde{\alpha} = \Xi_{17} + 3, \quad \tilde{\beta} = \Xi_{18} + \Xi_{19}.
+\tilde{\alpha} = \xi_{17} + 3, \quad \tilde{\beta} = \xi_{18} + \xi_{19}.
 \end{equation}
 
 Thus, the Bayes estimate is:
 \begin{equation}
-\hat{\theta}_{mean} = \frac{\tilde{\alpha}}{\tilde{\beta}} = \frac{\Xi_{17} + 3}{\Xi_{18} + \Xi_{19}}.
+\hat{\theta}_{mean} = \frac{\tilde{\alpha}}{\tilde{\beta}} = \frac{\xi_{17} + 3}{\xi_{18} + \xi_{19}}.
 \end{equation}
 
 \subsection{Part 3: Bayes Estimate Using the Mode}
@@ -85,11 +85,11 @@ Mode = \frac{\alpha - 1}{\beta}
 
 Using the posterior parameters from Part (a):
 \begin{equation}
-\tilde{\alpha} = \Xi_{17} + 3, \quad \tilde{\beta} = \Xi_{18} + \Xi_{19}.
+\tilde{\alpha} = \xi_{17} + 3, \quad \tilde{\beta} = \xi_{18} + \xi_{19}.
 \end{equation}
 
 The mode is:
 \begin{equation}
-\hat{\theta}_{mode} = \frac{\tilde{\alpha} - 1}{\tilde{\beta}} = \frac{\Xi_{17} + 2}{\Xi_{18} + \Xi_{19}}.
+\hat{\theta}_{mode} = \frac{\tilde{\alpha} - 1}{\tilde{\beta}} = \frac{\xi_{17} + 2}{\xi_{18} + \xi_{19}}.
 \end{equation}
 

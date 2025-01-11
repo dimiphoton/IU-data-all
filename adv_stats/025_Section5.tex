@@ -74,6 +74,36 @@ where $\mathbf{I}$ is the identity matrix.
 
 \subsection*{Results}
 
+\subsubsection*{OLS Solution}
+
+the OLS $beta$ estimates  are:
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/ols_beta.pdf}
+    \caption{OLS $\beta$ Estimates}
+\end{figure}
+
+the OLS fits are shown in the following figure:
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/ols_fit.pdf}
+    \caption{OLS fits}
+\end{figure}
+
+\subsubsection*{Ridge Solutions}
+
+There are few data, therefore the Ridge parameters were derived from a rmse search on all the data, without the train-test split.
+The Ridge rmse with $\lambda = 0.5356$ is $1.8e+23$.
+The fitted plot is shown below:
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/ridge_plot.pdf}
+    \caption{Ridge fit}
+\end{figure}
+
+
 
 \subsection*{Qualities of Solutions}
 \begin{itemize}
